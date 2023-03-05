@@ -32,7 +32,7 @@ def CustomFlashCards():
                 continue
             
             else:
-
+                user_input = user_input.lower() # making sure their is no case sensitivity
                 custom_flashcard_bank.append(user_input)
         
         
@@ -91,8 +91,14 @@ def CustomFlashCards():
         else:
             continue
 
-        # doing a final check on performance, to see if the user needs to improve or not
-    if (user_score / num_questions_answered) <= 0.5:
-        input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n____________________________________________\nYou got more than or exactly 50% of the questions wrong. Consider trying this test again.\n(please input anything into the terminal to continue): ")
+    # making sure the user actually did the test   
+    if (user_score == 0): 
+
+        print("You didn't try any of the questions!")
+
     else:
-        input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n(please input anything into the terminal to continue): ")
+        # doing a final check on performance, to see if the user needs to improve or not
+        if (user_score / num_questions_answered) <= 0.5:
+            input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n____________________________________________\nYou got more than or exactly 50% of the questions wrong. Consider trying this test again.\n(please input anything into the terminal to continue): ")
+        else:
+            input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n(please input anything into the terminal to continue): ")
