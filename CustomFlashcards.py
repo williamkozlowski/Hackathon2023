@@ -19,17 +19,23 @@ def CustomFlashCards():
         user_input = input("Please input a term, followed by a description of the term, seperated by a comma or type 'exit' to finish the flash cards.\n(Please input answer in terminal): ")
         
         if (user_input == "exit"):
-            break
+            if custom_flashcard_bank == []: # making sure the user actually inputted something into the test
+                print("You didn't input anything into the test! Please try again.")
+            else:    
+                break
 
         else:
-            index_of_term_split = user_input.find(",")
+            index_of_term_split = user_input.find(",") # returns -1 if it cant find a comma
 
-            if (index_of_term_split == -1):
+            if (index_of_term_split == -1): 
                 print("The term was not seperated by a comma, try again. Please follow the correct format.\n______________________________________")
+                continue
             
             else:
 
                 custom_flashcard_bank.append(user_input)
+        
+        
 
     input("____________________________________________\nYou have created your custom flash cards.\n(please input anything in the terminal to begin the quiz): ")
 
@@ -38,7 +44,7 @@ def CustomFlashCards():
     time.sleep(1.5) # easier on the eyes
 
     new_card_list = custom_flashcard_bank.copy() # making a copy of the list, so that everytime the test is finished, no data will be lost
-    total_num_of_questions = len(new_card_list)
+    total_num_of_questions = len(new_card_list) # finding total number of questions
 
     while True:
         
@@ -85,4 +91,8 @@ def CustomFlashCards():
         else:
             continue
 
-    input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n(please input anything into the terminal to continue): ")
+        # doing a final check on performance, to see if the user needs to improve or not
+    if (user_score / num_questions_answered) <= 0.5:
+        input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n____________________________________________\nYou got more than or exactly 50% of the questions wrong. Consider trying this test again.\n(please input anything into the terminal to continue): ")
+    else:
+        input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n(please input anything into the terminal to continue): ")

@@ -67,4 +67,8 @@ def PhysicsCards():
         else:
             continue
 
-    input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n(please input anything into the terminal to continue): ")
+        # doing a final check on performance, to see if the user needs to improve or not
+    if (user_score / num_questions_answered) <= 0.5:
+        input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n____________________________________________\nYou got more than or exactly 50% of the questions wrong. Consider trying this test again.\n(please input anything into the terminal to continue): ")
+    else:
+        input(f"____________________________________________\nYour summary:\nNumber of questions correct: {user_score}\nNumber of questions total: {num_questions_answered}\nNumber of skips: {user_skips}\n(please input anything into the terminal to continue): ")
