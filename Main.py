@@ -1,5 +1,5 @@
 """
-Author: William Kozlowski
+Authors: William Kozlowski & Jamin Glass
 File: Main.py
 Date Completed: March 5rd, 2023
 main excution of the flashcard program
@@ -29,7 +29,7 @@ while True:
 
     elif user_choice == "d":
         print("______________________________________") #easier on the eyes
-        GeneralPhysicsCards.PhysicsCards()
+        CustomFlashcards.CustomFlashCards()
 
     elif user_choice == "exit":
         print("______________________________________\nUntil next time!")
@@ -37,3 +37,5 @@ while True:
         
     else:
         print("Incorrect input, try again.")
+
+    
